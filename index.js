@@ -1,13 +1,17 @@
-console.log('Bababoy')
-
 //Create Variables
 const InputsContainer = document.getElementById("InputsContainer");
+
 let ValidInputCounter = 0;
 
 // Fonction pour mettre à jour la valeur affichée dans le span
 function updateCounterText() {
     document.getElementById("ValidInputCounterText").textContent = ValidInputCounter;
 }
+// Function to update ValidInputCounter
+function updateValidInputCounter() {
+    ValidInputCounter = InputsContainer.querySelectorAll('input.ValidInput').length;
+}
+updateValidInputCounter();
 updateCounterText();
 
 //Ajoute un nouvel input quand on commence à écrire dans le dernier
@@ -21,9 +25,12 @@ InputsContainer.addEventListener("input", (evt) => {
         newInput.className = "AddPlayerOut";
         InputsContainer.appendChild(newInput);
     }
+
+    updateValidInputCounter(); // Update the ValidInputCounter
+    updateCounterText();
 });
 
-// Ajoute la classe ValidInput quand il y a du texte dedans et fait en sorte qu'il n'y ai pas plus de 1 input vide en tout
+// Ajoute la classe ValidInput quand il y a du texte dedans et fait en sorte qu'il n'y ait pas plus de 1 input vide en tout
 InputsContainer.addEventListener("input", (evt) => {
     // Vérifie si la saisie a du texte
     if (evt.target.value.trim() !== "") {
@@ -34,21 +41,33 @@ InputsContainer.addEventListener("input", (evt) => {
         evt.target.classList.remove("ValidInput");
     }
 
-    // Compte le nombre d'entrées sans la classe ValidInput
-    const inputsWithoutValidClass = InputsContainer.querySelectorAll('input:not(.ValidInput)');
-    const numberOfInvalidInputs = inputsWithoutValidClass.length;
+    // Récupère tous les inputs dans InputsContainer
+    const inputs = InputsContainer.querySelectorAll(".AddPlayerOut");
+    let emptyInputs = 0;
 
-    // Si plus de 1 entrées n'ont pas la classe ValidInput
-    if (numberOfInvalidInputs > 1) {
-        // Supprime toutes les entrées sans la classe ValidInput, sauf la dernière
-        for (let i = 0; i < numberOfInvalidInputs - 1; i++) {
-            inputsWithoutValidClass[i].remove();
+    // Parcours tous les inputs pour compter les inputs vides
+    inputs.forEach((input) => {
+        if (input.value.trim() === "") {
+            emptyInputs++;
         }
+    });
+
+    // Si plus de 1 entrées sont vides
+    if (emptyInputs > 1) {
+        // Parcours tous les inputs pour supprimer tous les inputs vides, sauf le dernier
+        inputs.forEach((input, index) => {
+            if (input.value.trim() === "" && index !== inputs.length - 1) {
+                input.remove();
+            }
+        });
     }
+
+    updateValidInputCounter(); // Update the ValidInputCounter
+    updateCounterText();
 });
 
- // Faire en sorte que la touche enter nous fasse aller au prochaine input
- // Il faudrait l'optimiser ça em semble très long
+// Faire en sorte que la touche enter nous fasse aller au prochaine input
+// Il faudrait l'optimiser ça me semble très long
 InputsContainer.addEventListener("keydown", (evt) => {
     // Check if the pressed key is "Enter"
     if (evt.key === "Enter") {
@@ -64,4 +83,4 @@ InputsContainer.addEventListener("keydown", (evt) => {
         }
     }
 });
-console.log(ValidInputCounter)
+
