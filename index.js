@@ -3,16 +3,14 @@ const InputsContainer = document.getElementById("InputsContainer");
 
 let ValidInputCounter = 0;
 
-// Fonction pour mettre à jour la valeur affichée dans le span
-function updateCounterText() {
-    document.getElementById("ValidInputCounterText").textContent = ValidInputCounter;
-}
 // Function to update ValidInputCounter
 function updateValidInputCounter() {
     ValidInputCounter = InputsContainer.querySelectorAll('input.ValidInput').length;
 }
-updateValidInputCounter();
-updateCounterText();
+// Fonction pour mettre à jour la valeur affichée dans le span
+function updateCounterText() {
+    document.getElementById("ValidInputCounterText").textContent = ValidInputCounter;
+}
 
 //Ajoute un nouvel input quand on commence à écrire dans le dernier
 InputsContainer.addEventListener("input", (evt) => {
@@ -61,8 +59,7 @@ InputsContainer.addEventListener("input", (evt) => {
             }
         });
     }
-
-    updateValidInputCounter(); // Update the ValidInputCounter
+    updateValidInputCounter();
     updateCounterText();
 });
 
