@@ -4,6 +4,11 @@ console.log('Bababoy')
 const InputsContainer = document.getElementById("InputsContainer");
 let ValidInputCounter = 0;
 
+// Fonction pour mettre à jour la valeur affichée dans le span
+function updateCounterText() {
+    document.getElementById("ValidInputCounterText").textContent = ValidInputCounter;
+}
+updateCounterText();
 
 //Ajoute un nouvel input quand on commence à écrire dans le dernier
 InputsContainer.addEventListener("input", (evt) => {
@@ -15,26 +20,27 @@ InputsContainer.addEventListener("input", (evt) => {
         newInput.placeholder = "Ajouter un joueur";
         newInput.className = "AddPlayerOut";
         InputsContainer.appendChild(newInput);
-        InputCounter++;
     }
 });
 
 // Ajoute la classe ValidInput quand il y a du texte dedans et fait en sorte qu'il n'y ai pas plus de 1 input vide en tout
 InputsContainer.addEventListener("input", (evt) => {
-    // Check if the input has text
+    // Vérifie si la saisie a du texte
     if (evt.target.value.trim() !== "") {
+        // Ajoute la classe ValidInput si du texte est présent
         evt.target.classList.add("ValidInput");
     } else {
+        // Supprime la classe ValidInput si aucun texte n'est présent
         evt.target.classList.remove("ValidInput");
     }
 
-    // Calcule le nombre d'input qui n'a pas la classe ValidInput
+    // Compte le nombre d'entrées sans la classe ValidInput
     const inputsWithoutValidClass = InputsContainer.querySelectorAll('input:not(.ValidInput)');
     const numberOfInvalidInputs = inputsWithoutValidClass.length;
 
-    // Si il y'en a plus qu'une 
+    // Si plus de 1 entrées n'ont pas la classe ValidInput
     if (numberOfInvalidInputs > 1) {
-        // Enlève tout les inputs qui n'ont pas la classe ValidInput sauf le dernier
+        // Supprime toutes les entrées sans la classe ValidInput, sauf la dernière
         for (let i = 0; i < numberOfInvalidInputs - 1; i++) {
             inputsWithoutValidClass[i].remove();
         }
@@ -58,3 +64,4 @@ InputsContainer.addEventListener("keydown", (evt) => {
         }
     }
 });
+console.log(ValidInputCounter)
