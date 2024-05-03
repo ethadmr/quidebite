@@ -46,6 +46,7 @@ button {
     color: white;
     font-size: 1.5rem;
     font-family: "Mark pro";
+    outline: none;
 }
 
 /*Typography*/
@@ -58,6 +59,10 @@ body{
     gap: 32px;
     background-color: #DAD9E3;
     font-family: "Mark pro";
+    background: url(img/RB-GradientBackground.png) lightgray 50% / cover no-repeat ;
+    mix-blend-mode:normal;
+   
+    
 }
 
 #ExplicationButton{
@@ -76,6 +81,7 @@ body{
 
 #Credit{
     bottom: 8px;
+    color: #6C6C89;
 }
 
 /*Input*/
@@ -87,4 +93,11 @@ body{
 
 .ValidInput{
     background-color: greenyellow;
+  
+}
+
+#coutner {
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
