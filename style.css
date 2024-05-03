@@ -13,7 +13,6 @@
 
 footer{
     font-family: "Mark pro";
-    padding-top: 5rem;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -55,11 +54,12 @@ button {
 body{
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     align-items: center;
     gap: 32px;
     background-color: #DAD9E3;
     font-family: "Mark pro";
-    background: url(img/RB-GradientBackground.png) lightgray 50% / cover no-repeat ;
+    background: url(img/RB-GradientBackground.png) rgba(255, 255, 255, 0.638) 70% / cover no-repeat ;
     background-blend-mode: overlay; 
 }
 
