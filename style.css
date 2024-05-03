@@ -60,9 +60,7 @@ body{
     background-color: #DAD9E3;
     font-family: "Mark pro";
     background: url(img/RB-GradientBackground.png) lightgray 50% / cover no-repeat ;
-    mix-blend-mode:normal;
-   
-    
+    background-blend-mode: overlay; 
 }
 
 #ExplicationButton{
