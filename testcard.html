@@ -6,24 +6,51 @@
     <title>Document</title>
     <style>
         html{
-            height: 100%;
-            width: 100%;
-            background-image: url(img/RB-GradientBackground);
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 100% 100%;
-            background-blend-mode: overlay;
-            opacity: 0.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            gap: 32px;
+            font-family: "Mark pro";
+            background: url(img/RB-GradientBackground.png) rgba(55, 40, 147, 0.638) 70% / cover no-repeat ;
+            background-blend-mode: overlay; 
         }
-        html::before{
-            background-color: #372893;
+        div{
+            left: 100px;
+            top: 200px;
+            position: absolute;
+            width: 360px;
+            height: 240px;
+            border-radius: 16px;
+border: 1.5px solid rgba(218, 217, 227, 0.30);
+background: linear-gradient(106deg, rgba(255, 255, 255, 0.40) 3.04%, rgba(255, 255, 255, 0.00) 96.05%);
+backdrop-filter: blur(16.63113021850586px);
         }
-        
+        h2{
+            color: white;
+            margin-left: 20px;
+        }
+        #card1{
+            margin-top: 80px;
+        }
+        #card2{
+            margin-top: 160px;
+        }
 
     </style>
 </head>
 <body>
-    <div id="card">
+    <div >
+        <h2>
+            Julien
+        </h2>
+    </div>
+    <div id="card1">
+        <h2>
+            Julien
+        </h2>
+    </div>
+    <div id="card2">
         <h2>
             Julien
         </h2>
