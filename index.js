@@ -31,13 +31,14 @@ InputsContainer.addEventListener("input", (evt) => {
 // Ajoute la classe ValidInput quand il y a du texte dedans et fait en sorte qu'il n'y ait pas plus de 1 input vide en tout
 InputsContainer.addEventListener("input", (evt) => {
     // Vérifie si la saisie a du texte
-    if (evt.target.value.trim() !== "") {
+    if (evt.target.value.trim().length > 2) {
         // Ajoute la classe ValidInput si du texte est présent
         evt.target.classList.add("ValidInput");
     } else {
         // Supprime la classe ValidInput si aucun texte n'est présent
         evt.target.classList.remove("ValidInput");
     }
+
 
     // Récupère tous les inputs dans InputsContainer
     const inputs = InputsContainer.querySelectorAll(".AddPlayerOut");

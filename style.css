@@ -20,20 +20,6 @@ footer{
     justify-content: center;
 }
 
-input {
-    display: flex;
-    width: 23.0625rem;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.5rem;
-    border: 1px solid var(--color-gray-200, #D1D1DB);
-    background: var(--color-white-900, #FFF);
-    box-shadow: 0px 1px 2px 0px rgba(18, 18, 23, 0.05);
-    padding: 1rem;
-    font-family: "Mark pro";
-    font-size: 1rem;
-}
-
 button {
     display: flex;
     width: 23.0625rem;
@@ -90,10 +76,35 @@ body{
     gap: 4px;
 }
 
-.ValidInput{
-    /* background-color: greenyellow; */
-  
+input{
+    display: flex;
+    width: 23.0625rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 1px solid #D1D1DB;
+    background: #FFF;
+    box-shadow: 0px 1px 2px 0px rgba(18, 18, 23, 0.05);
+    padding: 1rem;
+    font-family: "Mark pro";
+    font-size: 1rem;
+    background-image: url(img/plus.png);
+    background-repeat: no-repeat;
+    background-position: right 12px center;
 }
+input:focus{
+    outline-width: 0;
+    border: 1px solid #2D2D41;
+    background-image: none;
+}
+input.ValidInput{
+    background-image: url(img/vu.png);
+    border: 1px solid #3C36F2;
+}    
+
+
+/* Style pour l'input avec icône */
+
 
 .counter {
     display:flex;
