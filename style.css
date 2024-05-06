@@ -46,6 +46,7 @@ button {
     font-size: 1.5rem;
     font-family: "Mark pro";
     outline: none;
+    border: 0;
 }
 
 /*Typography*/
@@ -90,11 +91,11 @@ body{
 }
 
 .ValidInput{
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
   
 }
 
-#coutner {
+.counter {
     display:flex;
     align-items:center;
     justify-content:center;

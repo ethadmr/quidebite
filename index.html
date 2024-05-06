@@ -6,16 +6,34 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="index.js"></script>
     <title>Kidébit</title>
+    <style>
+        /* Style pour l'input avec icône */
+        .input-with-icon {
+            position: relative;
+        }
+        .input-with-icon input {
+            padding-right: 30px; /* Ajuster l'espacement à droite selon la taille de l'icône */
+            background-image: url('img/plus.png'); /* Définir l'icône comme arrière-plan */
+            background-size: 20px 20px; /* Ajuster la taille de l'icône */
+            background-repeat: no-repeat;
+            background-position: right 5px center; /* Placer l'icône à droite */
+        }
+    </style>
 </head>
 <body>
     <header>
         <img id="logo_header" src="img/kidebit_logo_web.png" alt="logo_kitdebit">
         <div id="ExplicationButton">?</div>
     </header>
-    <div class="counter"><img src="img/picto_joueur.png" alt=""> <span id="ValidInputCounterText">0</span></div>
+    <div class="counter">
+        <img src="img/picto_joueur.png" alt="">
+        <span id="ValidInputCounterText">0</span>
+    </div>
     <div id="InputsContainer">
-        <input type="text" placeholder="Ajouter un joueur" class="AddPlayerOut" <img clas >
-        <input type="text" placeholder="Ajouter un joueur" class="AddPlayerOut">
+        <!-- Ajout de l'input avec icône à droite -->
+        <div class="input-with-icon">
+            <input type="text" placeholder="Ajouter un joueur" class="AddPlayerOut">
+        </div>
     </div>
     <button>Lancer</button>
     <footer>
