@@ -36,7 +36,9 @@ button {
 }
 
 /*Typography*/
-
+.icon {
+    height: 24px;
+}
 /*Layout*/
 body{
     display: flex;
@@ -48,6 +50,7 @@ body{
     font-family: "Mark pro";
     background: url(img/RB-GradientBackground.png) rgba(255, 255, 255, 0.638) 70% / cover no-repeat ;
     background-blend-mode: overlay; 
+    color: #2D2D41;
 }
 
 #ExplicationButton{
@@ -89,6 +92,7 @@ input{
     font-family: "Mark pro";
     font-size: 1rem;
     background-image: url(img/plus.png);
+    background-size: 24px;
     background-repeat: no-repeat;
     background-position: right 12px center;
 }
@@ -98,10 +102,12 @@ input:focus{
     background-image: none;
 }
 input.ValidInput{
-    background-image: url(img/vu.png);
+    background-image: url(img/trash.png);
     border: 1px solid #3C36F2;
-}    
-
+}
+input.ValidInput:focus{
+    background-image: url(img/vu.png);
+}
 
 /* Style pour l'input avec icône */
 
@@ -110,4 +116,5 @@ input.ValidInput{
     display:flex;
     align-items:center;
     justify-content:center;
+    gap: 4px;
 }
