@@ -76,9 +76,24 @@ body{
 #InputsContainer{
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
 }
-
+.InputBlock{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+.InputIcon{
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    margin-right: 12px;
+    background-image: url(img/plus.png);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: center;
+    pointer-events: none;
+}
 input{
     display: flex;
     width: 23.0625rem;
@@ -91,25 +106,32 @@ input{
     padding: 1rem;
     font-family: "Mark pro";
     font-size: 1rem;
-    background-image: url(img/plus.png);
-    background-size: 24px;
-    background-repeat: no-repeat;
-    background-position: right 12px center;
 }
+/* Style pour l'input avec icône */
 input:focus{
     outline-width: 0;
     border: 1px solid #2D2D41;
     background-image: none;
 }
-input.ValidInput{
+input:focus + .InputIcon{
+    background-image: none;
+    cursor: default;
+}
+input.ValidInput:not(:focus) + .InputIcon{
     background-image: url(img/trash.png);
+    cursor: pointer;
+    pointer-events: visible;
+}
+input.ValidInput + .InputIcon:hover{
+    background-image: url(img/trashred.png);
+}
+input.ValidInput{
     border: 1px solid #3C36F2;
 }
-input.ValidInput:focus{
+input.ValidInput:focus + .InputIcon{
     background-image: url(img/vu.png);
 }
 
-/* Style pour l'input avec icône */
 
 
 .counter {

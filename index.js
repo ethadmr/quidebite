@@ -17,16 +17,27 @@ InputsContainer.addEventListener("input", (evt) => {
     const inputs = InputsContainer.querySelectorAll(".AddPlayerOut");
     const lastInput = inputs[inputs.length - 1];
     if (evt.target === lastInput) {
+        const newInputBlock = document.createElement("div");
+        newInputBlock.className = "InputBlock";
+
         const newInput = document.createElement("input");
         newInput.type = "text";
         newInput.placeholder = "Ajouter un joueur";
         newInput.className = "AddPlayerOut";
-        InputsContainer.appendChild(newInput);
+
+        const newSpan = document.createElement("span");
+        newSpan.className = "InputIcon";
+
+        newInputBlock.appendChild(newInput);
+        newInputBlock.appendChild(newSpan);
+        
+        InputsContainer.appendChild(newInputBlock);
     }
 
     updateValidInputCounter(); // Update the ValidInputCounter
     updateCounterText();
 });
+
 
 // Ajoute la classe ValidInput quand il y a du texte dedans et fait en sorte qu'il n'y ait pas plus de 1 input vide en tout
 InputsContainer.addEventListener("input", (evt) => {
@@ -38,7 +49,6 @@ InputsContainer.addEventListener("input", (evt) => {
         // Supprime la classe ValidInput si aucun texte n'est présent
         evt.target.classList.remove("ValidInput");
     }
-
 
     // Récupère tous les inputs dans InputsContainer
     const inputs = InputsContainer.querySelectorAll(".AddPlayerOut");
@@ -56,13 +66,25 @@ InputsContainer.addEventListener("input", (evt) => {
         // Parcours tous les inputs pour supprimer tous les inputs vides, sauf le dernier
         inputs.forEach((input, index) => {
             if (input.value.trim() === "" && index !== inputs.length - 1) {
-                input.remove();
+                const inputBlock = input.parentElement;
+                inputBlock.remove(); // Supprime le div parent, qui contient à la fois l'input et le span
             }
         });
     }
+
     updateValidInputCounter();
     updateCounterText();
 });
+//delete the input when clicking on the icon trash
+InputsContainer.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("InputIcon")) {
+        const inputBlock = evt.target.parentElement;
+        inputBlock.remove(); // Supprime le div parent contenant l'input et le span
+        updateValidInputCounter();
+        updateCounterText();
+    }
+});
+
 
 // Faire en sorte que la touche enter nous fasse aller au prochaine input
 // Il faudrait l'optimiser ça me semble très long
