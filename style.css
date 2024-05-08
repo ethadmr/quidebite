@@ -132,8 +132,6 @@ input.ValidInput:focus + .InputIcon{
     background-image: url(img/vu.png);
 }
 
-
-
 .counter {
     display:flex;
     align-items:center;
