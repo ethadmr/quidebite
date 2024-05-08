@@ -103,4 +103,50 @@ InputsContainer.addEventListener("keydown", (evt) => {
         }
     }
 });
+// Function to save valid inputs to local storage
+function saveToLocalStorage() {
+    const validInputs = InputsContainer.querySelectorAll('input.ValidInput');
+    let data = {};  // Initialize an object to store input data
+    validInputs.forEach((input, index) => {
+        data[`input${index}`] = input.value;  // Use a key with the index or another identifier
+    });
+    localStorage.setItem('ValidInputs', JSON.stringify(data));
+}
+
+// Function to load valid inputs from local storage
+function loadFromLocalStorage() {
+    const savedInputs = JSON.parse(localStorage.getItem('ValidInputs'));
+    if (savedInputs) {
+        Object.values(savedInputs).forEach((value, index) => {
+            // Only create inputs if there's a saved value
+            if (value) {
+                const newInputBlock = document.createElement("div");
+                newInputBlock.className = "InputBlock";
+
+                const newInput = document.createElement("input");
+                newInput.type = "text";
+                newInput.value = value;  // Set the value from storage
+                newInput.className = "AddPlayerOut ValidInput";  // Restore valid input class
+
+                const newSpan = document.createElement("span");
+                newSpan.className = "InputIcon";
+
+                newInputBlock.appendChild(newInput);
+                newInputBlock.appendChild(newSpan);
+
+                InputsContainer.appendChild(newInputBlock);
+            }
+        });
+
+        // Update the counter based on the number of loaded valid inputs
+        ValidInputCounter = Object.keys(savedInputs).length;
+        updateCounterText();  // Update the counter display
+    }
+}
+
+// Add event listeners for saving and loading from local storage
+document.addEventListener('DOMContentLoaded', loadFromLocalStorage);
+InputsContainer.addEventListener("input", saveToLocalStorage);
+InputsContainer.addEventListener("click", saveToLocalStorage);
+InputsContainer.addEventListener("keydown", saveToLocalStorage);
 
