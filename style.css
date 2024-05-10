@@ -9,19 +9,30 @@
     height: 24px;
 }
 /*Layout*/
+.none{
+    display: none!important;
+}
 body{
     display: flex;
     max-width: 600px;
+    min-height: 100vh;
     margin: 0px auto 0px auto;
     flex-direction: column;
-    min-height: 100vh;
     align-items: center;
-    gap: 32px;
-    background-color: #DAD9E3;
     font-family: "NunitoSans";
     background: url(img/RB-GradientBackground.png) rgba(255, 255, 255, 0.638) 70% / cover no-repeat ;
     background-blend-mode: overlay; 
-    color: #2D2D41;
+    transition: 600ms;
+}
+.bodyPage2{
+    background: url(img/RB-GradientBackground.png) rgba(55, 40, 147, 1) 70% / cover no-repeat ;
+}
+#Page1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 56px;
 }
 #logo_header {
     min-width: 150px;
@@ -49,12 +60,19 @@ button {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    background: #3C36F2;
+    background-color: #3C36F2;
     color: white;
     font-size: 24px;
     font-family: "NunitoSans";
     outline: none;
     border: 0;
+    transition: 300ms;
+}
+button:hover{
+    background-color: #4E4BF8;
+}
+button:active{
+    background-color: #2F2BD8;
 }
 #ExplicationButton{
     position: absolute;
@@ -81,7 +99,8 @@ footer{
 #Credit{
     text-align: center;
     bottom: 8px;
-    color: #6C6C89;
+    color: #9690AF;
+    opacity: 40%;
 }
 
 /*Input*/

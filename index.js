@@ -77,7 +77,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Le code JavaScript à exécuter une fois que le DOM est chargé
     document.getElementById('PlayButton').addEventListener('click', function(){
         saveValidInputsToLocalStorage();
-        console.log(':)');
+        document.querySelector('#Page1').classList.add('none');
+        document.querySelector('body').classList.add('bodyPage2');
     });
 });
 
