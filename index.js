@@ -68,6 +68,18 @@ function handleInputFocusOut(evt) {
         }
     }
 }
+// document.getElementById('PlayButton').addEventListener('click', function(){
+//     saveValidInputsToLocalStorage()
+//     console.log(':)')
+// })
+// Save all inputs data in local storage
+document.addEventListener("DOMContentLoaded", function() {
+    // Le code JavaScript à exécuter une fois que le DOM est chargé
+    document.getElementById('PlayButton').addEventListener('click', function(){
+        saveValidInputsToLocalStorage();
+        console.log(':)');
+    });
+});
 
 // Ajout des gestionnaires d'événements
 inputsContainer.addEventListener("input", handleInput);

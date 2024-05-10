@@ -42,6 +42,7 @@ body{
     align-items: center; /* Pour aligner le compteur avec le pictogramme */
 }
 button {
+    cursor: pointer;
     display: flex;
     width: 100%;
     padding: 16px 64px;
