@@ -8,13 +8,11 @@ function updateInputInfo() {
 
 // Function to save valid inputs to local storage
 function saveValidInputsToLocalStorage() {
-    const inputs = InputsContainer.querySelectorAll(".AddPlayerOut.ValidInput");
-    const inputValues = [];
-    inputs.forEach((input) => {
-        inputValues.push(input.value);
-    });
+    const inputs = document.querySelectorAll(".AddPlayerOut.ValidInput");
+    const inputValues = Array.from(inputs).map(input => input.value);
     localStorage.setItem("savedValidInputs", JSON.stringify(inputValues));
 }
+
 
 // Ajoute un nouvel input ou ajuste les classes basé sur l'état du contenu
 function handleInput(evt) {

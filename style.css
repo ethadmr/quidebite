@@ -1,11 +1,39 @@
-#logo_header {
-    font-size: 12px; 
-    width: 15.09463rem;
-    height: 4.30044rem;
-    flex-shrink: 0; 
-    object-fit: contain; /* Ajout pour éviter la déformation */
+/*Typography*/
+@font-face {
+    font-family: NunitoSans;
+    src: 
+        url(/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf) format(truetype);
+        font-weight: 200 1000;
 }
-
+.icon {
+    height: 24px;
+}
+/*Layout*/
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0px;
+    align-items: center;
+    gap: 32px;
+    background-color: #DAD9E3;
+    font-family: "NunitoSans";
+    background: url(img/RB-GradientBackground.png) rgba(255, 255, 255, 0.638) 70% / cover no-repeat ;
+    background-blend-mode: overlay; 
+    color: #2D2D41;
+}
+#logo_header {
+    min-width: 150px;
+    width: 30vw;
+    max-width: 300px;
+    margin-top: 36px;
+}
+.counter {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 4px;
+}
 #counterContainer {
     display: flex;
     align-items: center; /* Pour aligner le compteur avec le pictogramme */
@@ -35,24 +63,6 @@ button {
     border: 0;
 }
 
-/*Typography*/
-.icon {
-    height: 24px;
-}
-/*Layout*/
-body{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    align-items: center;
-    gap: 32px;
-    background-color: #DAD9E3;
-    font-family: "Mark pro";
-    background: url(img/RB-GradientBackground.png) rgba(255, 255, 255, 0.638) 70% / cover no-repeat ;
-    background-blend-mode: overlay; 
-    color: #2D2D41;
-}
-
 #ExplicationButton{
     position: absolute;
     right: 8px;
@@ -64,7 +74,7 @@ body{
     align-items: center;
     background-color: rgb(255, 255, 255);
     border-radius: 1rem;
-    font-family: "Mark pro";
+    font-family: "NunitoSans";
 }
 
 #Credit{
@@ -104,7 +114,7 @@ input{
     background: #FFF;
     box-shadow: 0px 1px 2px 0px rgba(18, 18, 23, 0.05);
     padding: 1rem;
-    font-family: "Mark pro";
+    font-family: "NunitoSans";
     font-size: 1rem;
 }
 /* Style pour l'input avec icône */
@@ -130,11 +140,4 @@ input.ValidInput{
 }
 input.ValidInput:focus + .InputIcon{
     background-image: url(img/vu.png);
-}
-
-.counter {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap: 4px;
 }
