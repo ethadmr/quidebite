@@ -13,23 +13,26 @@ function saveValidInputsToLocalStorage() {
     localStorage.setItem("savedValidInputs", JSON.stringify(inputValues));
 }
 
+// Function to handle icon click (for input deletion)
+function handleIconClick(evt) {
+    if (evt.target.classList.contains("InputIcon")) {
+        evt.target.parentNode.remove(); // Supprimer le parent de l'icône (c'est-à-dire la div InputBlock)
+        updateInputInfo();
+    }
+}
 
 // Ajoute un nouvel input ou ajuste les classes basé sur l'état du contenu
 function handleInput(evt) {
-    const inputs = Array.from(inputsContainer.querySelectorAll(".AddPlayerOut"));
-    const lastInput = inputs[inputs.length - 1];
+    const inputs = Array.from(inputsContainer.querySelectorAll(".InputBlock"));
+    const lastInputBlock = inputs[inputs.length - 1];
     const currentInput = evt.target;
 
-    // Gestion de la création d'un nouvel input
-    if (currentInput === lastInput && currentInput.value.trim()) {
-        const newInputBlock = document.createElement("div");
-        newInputBlock.className = "InputBlock";
-        newInputBlock.innerHTML = '<input type="text" placeholder="Ajouter un joueur" class="AddPlayerOut">' +
-                                  '<span class="InputIcon"></span>';
+    // Gestion de la duplication d'une div InputBlock existante
+    if (currentInput === lastInputBlock.querySelector(".AddPlayerOut") && currentInput.value.trim()) {
+        const newInputBlock = lastInputBlock.cloneNode(true); // Clone la div InputBlock existante
+        newInputBlock.querySelector(".AddPlayerOut").value = ""; // Vider le nouvel input
         inputsContainer.appendChild(newInputBlock);
     }
-    
-    
 
     // Gestion des classes ValidInput
     if (currentInput.value.trim().length > 2) {
@@ -37,22 +40,8 @@ function handleInput(evt) {
     } else {
         currentInput.classList.remove("ValidInput");
     }
-
-    // Suppression des inputs vides inutiles, sauf le dernier
-    const emptyInputs = inputs.filter(input => !input.value.trim());
-    if (emptyInputs.length > 1) {
-        emptyInputs.slice(0, -1).forEach(input => input.parentElement.remove());
-    }
-
+    
     updateInputInfo();
-}
-
-// Suppression de l'input lorsque l'icône poubelle est cliquée
-function handleIconClick(evt) {
-    if (evt.target.classList.contains("InputIcon")) {
-        evt.target.parentElement.remove();
-        updateInputInfo();
-    }
 }
 
 // Gestion de la navigation au clavier
@@ -65,7 +54,23 @@ function handleKeyDown(evt) {
     }
 }
 
+// Gestion de la suppression des inputs vides lorsque l'input perd le focus
+function handleInputFocusOut(evt) {
+    const currentInput = evt.target;
+    const inputBlocks = inputsContainer.querySelectorAll(".InputBlock");
+    const lastInputBlock = inputBlocks[inputBlocks.length - 1];
+
+    // Vérifie si l'input n'est pas le dernier et s'il est vide
+    if (inputBlocks.length > 1 && currentInput.value.trim() === "") {
+        if (currentInput.parentNode !== lastInputBlock) {
+            currentInput.parentNode.remove(); // Supprimer le parent de l'input (c'est-à-dire la div InputBlock)
+            updateInputInfo();
+        }
+    }
+}
+
 // Ajout des gestionnaires d'événements
 inputsContainer.addEventListener("input", handleInput);
 inputsContainer.addEventListener("click", handleIconClick);
 inputsContainer.addEventListener("keydown", handleKeyDown);
+inputsContainer.addEventListener("focusout", handleInputFocusOut); // Utiliser focusout au lieu de blur
