@@ -1,23 +1,5 @@
 const inputsContainer = document.getElementById("InputsContainer");
 
-//Garde les données de la page 2 si on rafraichi
-document.addEventListener("DOMContentLoaded", function() {
-    // Vérifier s'il y a des données dans le localStorage
-    const savedInputs = JSON.parse(localStorage.getItem("savedValidInputs"));
-    if (savedInputs && savedInputs.length > 0) {
-        // Exécuter le même code que lorsque vous cliquez sur le bouton "Play"
-        document.querySelector('#Page1').classList.add('none');
-        document.querySelector('body').classList.add('bodyPage2');
-        const outputDiv = document.getElementById("Page2");
-        outputDiv.innerHTML = "";
-        savedInputs.forEach(function(inputValue) {
-            const template = document.querySelector("#card").content.cloneNode(true);
-            template.querySelector("h2").textContent = inputValue;
-            outputDiv.appendChild(template);
-        });
-    }
-});
-
 // Fonction pour mettre à jour le compteur et le texte affiché
 function updateInputInfo() {
     const validInputCount = inputsContainer.querySelectorAll('input.ValidInput').length;
