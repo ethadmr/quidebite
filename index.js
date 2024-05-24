@@ -69,26 +69,60 @@ function handleInputFocusOut(evt) {
     }
 }
 
-    // Le code JavaScript à exécuter une fois que le DOM est chargé
-document.getElementById('PlayButton').addEventListener('click', function(){
+// Le code JavaScript à exécuter une fois que le DOM est chargé
+document.getElementById('PlayButton').addEventListener('click', function() {
     saveValidInputsToLocalStorage();
     document.querySelector('#Page1').classList.add('none');
     document.querySelector('body').classList.add('bodyPage2');
 
     // Récupérer les données du localStorage
     const savedInputs = JSON.parse(localStorage.getItem("savedValidInputs"));
+    
     // Afficher les données dans le modèle HTML
     const outputDiv = document.getElementById("Page2");
     outputDiv.innerHTML = ""; // Efface le contenu précédent
+
     savedInputs.forEach(function(inputValue) {
-            const template = document.querySelector("#card").content.cloneNode(true);
-            template.querySelector("h2").textContent = inputValue;
-            outputDiv.appendChild(template);
+        const template = document.querySelector("#card").content.cloneNode(true);
+        template.querySelector("h2").textContent = inputValue;
+        outputDiv.appendChild(template);
     });
+
+    // Animer les cartes pour le chargement
+    const cards = document.querySelectorAll(".cardDesign");
+    cards.forEach((card, index) => {
+        card.style.zIndex = savedInputs.length - index; // Superposer les cartes
+        card.style.transition = "transform 0.3s, opacity 0.3s";
+        setTimeout(() => {
+            card.style.transform = `translate(-100vw, ${index * 5}px)`;
+        }, index * 100); // Déplacer à gauche avec un délai pour l'effet de vague
+    });
+
+    // Revenir au centre après le chargement
+    setTimeout(() => {
+        cards.forEach((card, index) => {
+            card.style.transform = `translate(-50vw, ${index * 10}px)`;
+        });
+
+        // Sélectionner une carte aléatoire après le chargement
+        setTimeout(() => {
+            const randomIndex = Math.floor(Math.random() * cards.length);
+            cards.forEach((card, index) => {
+                if (index === randomIndex) {
+                    card.style.transform = "translate(0, 0) scale(1.1)";
+                    card.style.opacity = "1";
+                } else {
+                    card.style.opacity = "0";
+                }
+            });
+        }, 4000); // Attendre 4 secondes avant de sélectionner une carte
+
+    }, cards.length * 100 + 500); // Délai initial pour commencer l'animation après le rendu des cartes
+
 });
 
 // Ajout des gestionnaires d'événements
 inputsContainer.addEventListener("input", handleInput);
 inputsContainer.addEventListener("click", handleIconClick);
 inputsContainer.addEventListener("keydown", handleKeyDown);
-inputsContainer.addEventListener("focusout", handleInputFocusOut); // Utiliser focusout au lieu de blur
+inputsContainer.addEventListener("focusout", handleInputFocusOut); // U
