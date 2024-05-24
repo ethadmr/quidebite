@@ -90,18 +90,18 @@ document.getElementById('PlayButton').addEventListener('click', function() {
 
     // Animer les cartes pour le chargement
     const cards = document.querySelectorAll(".cardDesign");
-    const animationDuration = 5000; // Durée totale de l'animation en millisecondes
-    const animationDelay = 2000; // Délai avant le début de l'animation en millisecondes
-    const waveOffset = 20; // Décalage initial pour l'effet de vague
+    const animationDuration = 3000; // Réduire la durée totale de l'animation
+    const animationDelay = 1000; // Réduire le délai avant le début de l'animation
+    const waveOffset = 10; // Réduire le décalage initial pour l'effet de vague
 
     // Délai pour le démarrage de l'animation
     setTimeout(() => {
         // Faire avancer chaque carte pour créer une vague
         cards.forEach((card, index) => {
-            const waveDelay = index * 500; // Délai pour chaque carte
+            const waveDelay = index * 250; // Réduire le délai pour chaque carte
             setTimeout(() => {
                 card.style.transition = `transform ${animationDuration}ms, opacity ${animationDuration}ms`;
-                card.style.transform = `translateX(-${index * 20}px) translateY(${index * waveOffset}px)`; // Déplacement vers la gauche et effet de vague
+                card.style.transform = `translateX(-${index * 10}px) translateY(${index * 10}px)`; // Déplacement vers la gauche et effet de vague
             }, waveDelay);
         });
         
@@ -116,6 +116,11 @@ document.getElementById('PlayButton').addEventListener('click', function() {
                     card.style.opacity = "0";
                 }
             });
+            // Afficher le texte et les boutons lorsque la carte gagnante est affichée
+            const winnerCard = document.querySelector(".cardDesign:nth-child(" + (randomIndex + 1) + ")");
+            winnerCard.id = "WinnerCard";
+            document.getElementById('WinnerInfoContainer').classList.remove('none');
+            document.getElementById('ButtonContainer').classList.remove('none');
         }, animationDuration);
     }, animationDelay);
 });
@@ -125,3 +130,12 @@ inputsContainer.addEventListener("input", handleInput);
 inputsContainer.addEventListener("click", handleIconClick);
 inputsContainer.addEventListener("keydown", handleKeyDown);
 inputsContainer.addEventListener("focusout", handleInputFocusOut); // Utiliser focusout au lieu de blur
+
+// Ajout des gestionnaires d'événements pour les nouveaux boutons
+document.getElementById('RestartButton').addEventListener('click', function() {
+    // Code pour recommencer le tirage au sort
+});
+
+document.getElementById('NewGameButton').addEventListener('click', function() {
+    location.reload(); // Recharger la page pour commencer une nouvelle partie
+});

@@ -224,3 +224,43 @@ h2{
     }
 }
 
+#WinnerInfoContainer {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+#ButtonContainer {
+    display: flex;
+    gap: 16px;
+}
+
+#WinnerInfoText {
+    color: var(--color-white-900, #FFF);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+#RestartButton, {
+    display: flex;
+    width: 23.0625rem;
+    padding: 1rem 9.1875rem;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.5rem;
+    background: #EBECF1;
+    box-shadow: -1px -1px 0px 0px rgba(0, 0, 0, 0.10) inset;
+}
+
+#NewGameButton {
+    border-radius: 0.5rem;
+    background: #F3019C;
+    box-shadow: -1px -1px 0px 0px rgba(0, 0, 0, 0.10) inset;
+    display: flex;
+    width: 23.0625rem;
+    padding: 1rem 9.1875rem;
+    justify-content: space-between;
+    align-items: center;
+}
