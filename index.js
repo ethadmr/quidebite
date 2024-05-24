@@ -90,21 +90,22 @@ document.getElementById('PlayButton').addEventListener('click', function() {
 
     // Animer les cartes pour le chargement
     const cards = document.querySelectorAll(".cardDesign");
-    cards.forEach((card, index) => {
-        card.style.zIndex = savedInputs.length - index; // Superposer les cartes
-        card.style.transition = "transform 0.3s, opacity 0.3s";
-        setTimeout(() => {
-            card.style.transform = `translate(-100vw, ${index * 5}px)`;
-        }, index * 100); // Déplacer à gauche avec un délai pour l'effet de vague
-    });
+    const animationDuration = 5000; // Durée totale de l'animation en millisecondes
+    const animationDelay = 2000; // Délai avant le début de l'animation en millisecondes
+    const waveOffset = 20; // Décalage initial pour l'effet de vague
 
-    // Revenir au centre après le chargement
+    // Délai pour le démarrage de l'animation
     setTimeout(() => {
+        // Faire avancer chaque carte pour créer une vague
         cards.forEach((card, index) => {
-            card.style.transform = `translate(-50vw, ${index * 10}px)`;
+            const waveDelay = index * 500; // Délai pour chaque carte
+            setTimeout(() => {
+                card.style.transition = `transform ${animationDuration}ms, opacity ${animationDuration}ms`;
+                card.style.transform = `translateX(-${index * 20}px) translateY(${index * waveOffset}px)`; // Déplacement vers la gauche et effet de vague
+            }, waveDelay);
         });
-
-        // Sélectionner une carte aléatoire après le chargement
+        
+        // Sélectionner une carte aléatoire après l'animation
         setTimeout(() => {
             const randomIndex = Math.floor(Math.random() * cards.length);
             cards.forEach((card, index) => {
@@ -115,14 +116,12 @@ document.getElementById('PlayButton').addEventListener('click', function() {
                     card.style.opacity = "0";
                 }
             });
-        }, 4000); // Attendre 4 secondes avant de sélectionner une carte
-
-    }, cards.length * 100 + 500); // Délai initial pour commencer l'animation après le rendu des cartes
-
+        }, animationDuration);
+    }, animationDelay);
 });
 
 // Ajout des gestionnaires d'événements
 inputsContainer.addEventListener("input", handleInput);
 inputsContainer.addEventListener("click", handleIconClick);
 inputsContainer.addEventListener("keydown", handleKeyDown);
-inputsContainer.addEventListener("focusout", handleInputFocusOut); // U
+inputsContainer.addEventListener("focusout", handleInputFocusOut); // Utiliser focusout au lieu de blur
