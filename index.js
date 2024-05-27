@@ -68,7 +68,6 @@ function handleInputFocusOut(evt) {
         }
     }
 }
-
 // Le code JavaScript à exécuter une fois que le DOM est chargé
 document.getElementById('PlayButton').addEventListener('click', function() {
     saveValidInputsToLocalStorage();
@@ -88,14 +87,14 @@ document.getElementById('PlayButton').addEventListener('click', function() {
         outputDiv.appendChild(template);
     });
 
-    // Animer les cartes pour le chargement
+    // Animer les cartes pour le chargement avec un délai plus long
     const cards = document.querySelectorAll(".cardDesign");
     cards.forEach((card, index) => {
         card.style.zIndex = savedInputs.length - index; // Superposer les cartes
-        card.style.transition = "transform 0.3s, opacity 0.3s";
+        card.style.transition = "transform 1s, opacity 0.3s";
         setTimeout(() => {
-            card.style.transform = `translate(-100vw, ${index * 5}px)`;
-        }, index * 100); // Déplacer à gauche avec un délai pour l'effet de vague
+            card.style.transform = `translate(-70vw, ${index * 5}px)`;
+        }, index * 100 + 400); // Déplacer à gauche avec un délai plus long pour l'effet de vague
     });
 
     // Revenir au centre après le chargement
@@ -109,17 +108,18 @@ document.getElementById('PlayButton').addEventListener('click', function() {
             const randomIndex = Math.floor(Math.random() * cards.length);
             cards.forEach((card, index) => {
                 if (index === randomIndex) {
-                    card.style.transform = "translate(0, 0) scale(1.1)";
+                    card.style.transform = "translate(0, 0) scale(1.2)";
                     card.style.opacity = "1";
                 } else {
                     card.style.opacity = "0";
                 }
             });
-        }, 4000); // Attendre 4 secondes avant de sélectionner une carte
+        }, 3000); // Attendre 4 secondes avant de sélectionner une carte
 
-    }, cards.length * 100 + 500); // Délai initial pour commencer l'animation après le rendu des cartes
+    }, cards.length * 200 + 1500); // Délai initial plus long pour commencer l'animation après le rendu des cartes
 
 });
+
 
 // Ajout des gestionnaires d'événements
 inputsContainer.addEventListener("input", handleInput);

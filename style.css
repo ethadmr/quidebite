@@ -168,7 +168,7 @@ input.ValidInput:focus + .InputIcon{
 /*Card*/
 #Page2{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 100%;
     align-items: center;
     padding-top: 200px;
