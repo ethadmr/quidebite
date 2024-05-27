@@ -32,6 +32,9 @@ function handleInput(evt) {
         const newInputBlock = lastInputBlock.cloneNode(true); // Clone la div InputBlock existante
         newInputBlock.querySelector(".AddPlayerOut").value = ""; // Vider le nouvel input
         inputsContainer.appendChild(newInputBlock);
+        
+        // Faire défiler jusqu'en bas
+        newInputBlock.scrollIntoView({ behavior: 'smooth' });
     }
 
     // Gestion des classes ValidInput
@@ -119,7 +122,6 @@ document.getElementById('PlayButton').addEventListener('click', function() {
     }, cards.length * 200 + 1500); // Délai initial plus long pour commencer l'animation après le rendu des cartes
 
 });
-
 
 // Ajout des gestionnaires d'événements
 inputsContainer.addEventListener("input", handleInput);

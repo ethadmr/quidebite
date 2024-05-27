@@ -13,6 +13,7 @@
     display: none!important;
 }
 body{
+    color: #2D2D41;
     display: flex;
     max-width: 600px;
     min-height: 100vh;
@@ -95,12 +96,13 @@ footer{
     display: flex;
     justify-content: center;
     z-index: -10;
+    mix-blend-mode: luminosity;
 }
 #Credit{
     text-align: center;
     bottom: 8px;
-    color: #9690AF;
-    opacity: 40%;
+    color: #6C6C89;
+    opacity: 300%;
 }
 
 /*Input*/
@@ -114,7 +116,7 @@ input{
     background: #FFF;
     box-shadow: 0px 1px 2px 0px rgba(18, 18, 23, 0.05);
     padding: 12px;
-    
+    color: #2D2D41;
     font-size: 16px;
     line-height: 30px;
 }
@@ -177,6 +179,7 @@ input.ValidInput:focus + .InputIcon{
 .cardDesign{
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
     align-items: flex-start;
     padding: 18px;
     width: 100%;
@@ -200,7 +203,8 @@ input.ValidInput:focus + .InputIcon{
 }
 h2{
     color: #FFF;
-    
+    max-width: 85%;
+    overflow: hidden;
     font-size: 28px;
     font-weight: 500;
     margin: 0px;
