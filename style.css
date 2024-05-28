@@ -32,6 +32,7 @@ body{
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-top: 64px;
     align-items: center;
     gap: 56px;
 }
@@ -41,29 +42,31 @@ body{
     max-width: 300px;
     margin-top: 36px;
 }
-.counter {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap: 4px;
-    font-size: 18px;
-    font-weight: 400;
-}
 button {
     cursor: pointer;
     display: flex;
     width: 100%;
     padding: 16px 64px;
+    gap: 12px;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
     background-color: #3C36F2;
     color: white;
     font-size: 24px;
-    
     outline: none;
     border: 0;
     transition: 300ms;
+}
+.counter {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 18px;
+    font-weight: 400;
+}
+#ValidInputCounterText{
+    margin-top: 2PX;
 }
 button:hover{
     background-color: #4E4BF8;
