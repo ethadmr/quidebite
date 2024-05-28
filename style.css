@@ -21,7 +21,7 @@ body{
     flex-direction: column;
     align-items: center;
     font-family: "NunitoSans";
-    background: url("img/RB-GradientBackground.png") rgba(255, 255, 255, 0.638) 70% / cover no-repeat ;
+    background: url("img/RB-GradientBackground2.png") rgba(218, 217, 227, 0.638) 70% / cover no-repeat ;
     background-blend-mode: overlay; 
     transition: 600ms;
 }
@@ -48,10 +48,6 @@ body{
     gap: 4px;
     font-size: 18px;
     font-weight: 400;
-}
-#counterContainer {
-    display: flex;
-    align-items: center; /* Pour aligner le compteur avec le pictogramme */
 }
 button {
     cursor: pointer;
