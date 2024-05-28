@@ -97,7 +97,7 @@ document.getElementById('PlayButton').addEventListener('click', function() {
         card.style.transition = "transform 1s, opacity 0.3s";
         setTimeout(() => {
             card.style.transform = `translate(-70vw, ${index * 5}px)`;
-        }, index * 100 + 400); // Déplacer à gauche avec un délai plus long pour l'effet de vague
+        }, index * 100 + 600); // Déplacer à gauche avec un délai plus long pour l'effet de vague
     });
 
     // Revenir au centre après le chargement
@@ -127,4 +127,4 @@ document.getElementById('PlayButton').addEventListener('click', function() {
 inputsContainer.addEventListener("input", handleInput);
 inputsContainer.addEventListener("click", handleIconClick);
 inputsContainer.addEventListener("keydown", handleKeyDown);
-inputsContainer.addEventListener("focusout", handleInputFocusOut); // U
+inputsContainer.addEventListener("focusout", handleInputFocusOut);
