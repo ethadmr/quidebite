@@ -91,6 +91,36 @@ button:active{
     border-radius: 1rem;
     
 }
+#ButtonContainer{
+    position: absolute;
+    max-width: 600px;
+    bottom: 120px;
+    display: none;
+    margin-top: 200px;
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+}
+button#NouvellePartie{
+    background-color: #F3019C;
+}
+button#NouvellePartie:hover{
+    background-color: #FB2AB6;
+}
+button#NouvellePartie:active{
+    background-color: #D81597;
+}
+button#Recommencer{
+    color: #2D2D41;
+    background-color: #EBECF1;
+}
+button#Recommencer:hover{
+    background-color: #FFFFFF;
+}
+button#Recommencer:active{
+    background-color: #DAD9E3;
+}
+
 footer{
     
     position: fixed;
@@ -178,6 +208,7 @@ input.ValidInput:focus + .InputIcon{
     align-items: center;
     padding-top: 200px;
     max-width: 332px;
+    transition: 600ms;
 }
 .cardDesign{
     display: flex;
@@ -185,7 +216,7 @@ input.ValidInput:focus + .InputIcon{
     overflow: hidden;
     align-items: flex-start;
     padding: 18px;
-    width: 100%;
+    width: 350px;
     height: 182px;
     margin-top: -140px;
     border-radius: 16px;
@@ -204,6 +235,21 @@ input.ValidInput:focus + .InputIcon{
         margin-top: -140px;
     }
 }
+@keyframes shrinkFadeOut {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+  }
+  
+  .shrinkFadeOut {
+    animation: shrinkFadeOut 0.5s forwards;
+  }
+  
 h2{
     color: #FFF;
     max-width: 85%;
@@ -227,6 +273,9 @@ h2{
 /*Mobile*/
 @media screen and (max-width: 767px) {
     body{
+        width: 92vw;
+    }
+    #ButtonContainer{
         width: 92vw;
     }
 }

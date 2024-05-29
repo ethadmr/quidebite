@@ -1,5 +1,6 @@
 const inputsContainer = document.getElementById("InputsContainer");
 const playButton = document.getElementById('PlayButton');
+const buttonContainer = document.getElementById('ButtonContainer'); // Sélectionner la div ButtonContainer
 
 // Fonction pour mettre à jour le compteur et le texte affiché
 function updateInputInfo() {
@@ -120,13 +121,28 @@ playButton.addEventListener('click', function() {
             const randomIndex = Math.floor(Math.random() * cards.length);
             cards.forEach((card, index) => {
                 if (index === randomIndex) {
+                    card.style.zIndex = savedInputs.length + 1; // Mettre la carte sélectionnée au-dessus des autres
                     card.style.transform = "translate(0, 0) scale(1.2)";
                     card.style.opacity = "1";
                 } else {
+                    card.style.transition = "opacity 0.5s";
                     card.style.opacity = "0";
                 }
             });
-        }, 3000); // Attendre 4 secondes avant de sélectionner une carte
+
+            // Supprimer les cartes non sélectionnées après l'animation de disparition
+            setTimeout(() => {
+                cards.forEach((card, index) => {
+                    if (index !== randomIndex) {
+                        card.remove();
+                    }
+                });
+            }, 500); // Attendre que l'animation de disparition soit terminée avant de supprimer
+
+            // Rendre le ButtonContainer visible en même temps que la carte apparaît
+            buttonContainer.style.display = 'flex';
+
+        }, 3000); // Attendre 3 secondes avant de sélectionner une carte
 
     }, cards.length * 200 + 1500); // Délai initial plus long pour commencer l'animation après le rendu des cartes
 
