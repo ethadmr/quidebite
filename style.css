@@ -74,6 +74,10 @@ button:hover{
 button:active{
     background-color: #2F2BD8;
 }
+.InactiveButton{
+    background-color: #ABB0FF;
+    pointer-events: none;
+}
 #ExplicationButton{
     position: absolute;
     right: 8px;

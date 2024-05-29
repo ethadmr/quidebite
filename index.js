@@ -1,9 +1,17 @@
 const inputsContainer = document.getElementById("InputsContainer");
+const playButton = document.getElementById('PlayButton');
 
 // Fonction pour mettre à jour le compteur et le texte affiché
 function updateInputInfo() {
     const validInputCount = inputsContainer.querySelectorAll('input.ValidInput').length;
     document.getElementById("ValidInputCounterText").textContent = validInputCount;
+
+    // Ajoute ou retire la classe InactiveButton en fonction du nombre d'inputs valides
+    if (validInputCount < 2) {
+        playButton.classList.add("InactiveButton");
+    } else {
+        playButton.classList.remove("InactiveButton");
+    }
 }
 
 // Function to save valid inputs to local storage
@@ -71,8 +79,9 @@ function handleInputFocusOut(evt) {
         }
     }
 }
+
 // Le code JavaScript à exécuter une fois que le DOM est chargé
-document.getElementById('PlayButton').addEventListener('click', function() {
+playButton.addEventListener('click', function() {
     saveValidInputsToLocalStorage();
     document.querySelector('#Page1').classList.add('none');
     document.querySelector('body').classList.add('bodyPage2');
