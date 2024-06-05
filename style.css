@@ -23,7 +23,7 @@ body{
     font-family: "NunitoSans";
     background: url("img/RB-GradientBackground2.png") rgba(218, 217, 227, 0.638) 70% / cover no-repeat ;
     background-blend-mode: overlay; 
-    transition: 600ms;
+    transition: 1500ms;
 }
 .bodyPage2{
     background: url("img/RB-GradientBackground.png") rgba(55, 40, 147, 1) 70% / cover no-repeat ;
@@ -275,7 +275,12 @@ h2{
     body{
         width: 92vw;
     }
+<<<<<<< Updated upstream
     #ButtonContainer{
         width: 92vw;
     }
 }
+=======
+}
+
+>>>>>>> Stashed changes
