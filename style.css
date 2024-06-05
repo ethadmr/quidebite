@@ -93,8 +93,9 @@ button:active{
 }
 #ButtonContainer{
     position: absolute;
+    z-index: 10;
     max-width: 600px;
-    bottom: 120px;
+    bottom: 10vh;
     display: none;
     margin-top: 200px;
     width: 100%;
@@ -212,7 +213,7 @@ input.ValidInput:focus + .InputIcon{
 }
 .reaction {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
     z-index: 10;
     position: absolute;
     top: 40%;
@@ -228,7 +229,7 @@ input.ValidInput:focus + .InputIcon{
 .reaction p {
     font-size: 16px;
     color: #fff;
-    margin-top: 20px;
+    margin-top: -10px;
 }
 
 .cardDesign{
