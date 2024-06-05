@@ -1,6 +1,6 @@
 const inputsContainer = document.getElementById("InputsContainer");
 const playButton = document.getElementById('PlayButton');
-const buttonContainer = document.getElementById('ButtonContainer'); // Sélectionner la div ButtonContainer
+const buttonContainer = document.getElementById('ButtonContainer');
 
 // Fonction pour mettre à jour le compteur et le texte affiché
 function updateInputInfo() {
@@ -81,6 +81,34 @@ function handleInputFocusOut(evt) {
     }
 }
 
+// Function to get a random image from the reactions folder
+function getRandomReactionImage() {
+    const imageCount = 5; // Total number of reaction images available
+    const randomIndex = Math.floor(Math.random() * imageCount) + 1;
+    return `img/reactions/reaction${randomIndex}.png`;
+}
+
+// Function to display the reaction image and text
+function displayReaction() {
+    const reactionImageSrc = getRandomReactionImage();
+    const reactionText = "BAHAHA Gros looser";
+
+    const reactionDiv = document.createElement("div");
+    reactionDiv.classList.add("reaction");
+
+    const reactionImage = document.createElement("img");
+    reactionImage.src = reactionImageSrc;
+    reactionImage.alt = "Reaction Image";
+
+    const reactionTextElement = document.createElement("p");
+    reactionTextElement.textContent = reactionText;
+
+    reactionDiv.appendChild(reactionImage);
+    reactionDiv.appendChild(reactionTextElement);
+
+    document.querySelector("#Page2").appendChild(reactionDiv);
+}
+
 // Le code JavaScript à exécuter une fois que le DOM est chargé
 playButton.addEventListener('click', function() {
     saveValidInputsToLocalStorage();
@@ -137,6 +165,10 @@ playButton.addEventListener('click', function() {
                         card.remove();
                     }
                 });
+
+                // Display the reaction image and text after removing non-selected cards
+                displayReaction();
+
             }, 500); // Attendre que l'animation de disparition soit terminée avant de supprimer
 
             // Rendre le ButtonContainer visible en même temps que la carte apparaît
