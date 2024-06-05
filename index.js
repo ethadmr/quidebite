@@ -11,15 +11,6 @@ function playClickSound() {
     clickSound.play();
 }
 
-const backgroundMusic = document.getElementById('backgroundMusic'); // Récupérer l'élément audio de fond
-const clickSound = document.getElementById('clickSound'); // Récupérer l'élément audio du clic
-
-// Fonction pour jouer le son de clic
-function playClickSound() {
-    clickSound.currentTime = 0; // Réinitialiser le temps de lecture pour permettre la répétition rapide
-    clickSound.play();
-}
-
 // Fonction pour mettre à jour le compteur et le texte affiché
 function updateInputInfo() {
     const validInputCount = inputsContainer.querySelectorAll('input.ValidInput').length;
