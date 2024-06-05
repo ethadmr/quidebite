@@ -1,6 +1,8 @@
 const inputsContainer = document.getElementById("InputsContainer");
 const playButton = document.getElementById('PlayButton');
 const buttonContainer = document.getElementById('ButtonContainer');
+const recommencerButton = document.getElementById('Recommencer');
+const nouvellePartieButton = document.getElementById('NouvellePartie');
 
 const backgroundMusic = document.getElementById('backgroundMusic'); // Récupérer l'élément audio de fond
 const clickSound = document.getElementById('clickSound'); // Récupérer l'élément audio du clic
@@ -113,17 +115,9 @@ function displayReaction() {
 
     document.querySelector("#Page2").appendChild(reactionDiv);
 }
-
-// Le code JavaScript à exécuter une fois que le DOM est chargé
-playButton.addEventListener('click', function() {
-    saveValidInputsToLocalStorage();
-    document.querySelector('#Page1').classList.add('none');
-    document.querySelector('body').classList.add('bodyPage2');
-
-    // Récupérer les données du localStorage
+// Function to animate and select a random card
+function animateAndSelectCard() {
     const savedInputs = JSON.parse(localStorage.getItem("savedValidInputs"));
-    
-    // Afficher les données dans le modèle HTML
     const outputDiv = document.getElementById("Page2");
     outputDiv.innerHTML = ""; // Efface le contenu précédent
 
@@ -133,7 +127,6 @@ playButton.addEventListener('click', function() {
         outputDiv.appendChild(template);
     });
 
-    // Animer les cartes pour le chargement avec un délai plus long
     const cards = document.querySelectorAll(".cardDesign");
     cards.forEach((card, index) => {
         card.style.zIndex = savedInputs.length - index; // Superposer les cartes
@@ -174,10 +167,10 @@ playButton.addEventListener('click', function() {
                 // Display the reaction image after removing non-selected cards
                 displayReaction();
 
-            }, 500); // Attendre que l'animation de disparition soit terminée avant de supprimer
+                // Rendre le ButtonContainer visible en même temps que la carte apparaît
+                buttonContainer.style.display = 'flex';
 
-            // Rendre le ButtonContainer visible en même temps que la carte apparaît
-            buttonContainer.style.display = 'flex';
+            }, 500); // Attendre que l'animation de disparition soit terminée avant de supprimer
 
             // Jouer la musique de fond
             backgroundMusic.play();
@@ -185,10 +178,30 @@ playButton.addEventListener('click', function() {
         }, 3000); // Attendre 3 secondes avant de sélectionner une carte
 
     }, cards.length * 500 + 1500); // Délai initial plus long pour commencer l'animation après le rendu des cartes
+}
 
-    // Jouer le son de clic pour le bouton de lecture
+// Le code JavaScript à exécuter une fois que le DOM est chargé
+playButton.addEventListener('click', function() {
+    saveValidInputsToLocalStorage();
+    document.querySelector('#Page1').classList.add('none');
+    document.querySelector('body').classList.add('bodyPage2');
+    animateAndSelectCard();
     playClickSound();
 });
+
+// Recharger la page pour une nouvelle partie
+nouvellePartieButton.addEventListener('click', function() {
+    location.reload();
+});
+
+// Relancer le tirage au sort de la carte sans recharger la page
+recommencerButton.addEventListener('click', function() {
+    buttonContainer.style.display = 'none'; // Cacher les boutons
+    document.querySelector('#Page2').innerHTML = ""; // Effacer le contenu précédent
+    animateAndSelectCard();
+    playClickSound();
+});
+
 
 // Ajout des gestionnaires d'événements
 inputsContainer.addEventListener("input", handleInput);
