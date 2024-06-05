@@ -2,6 +2,15 @@ const inputsContainer = document.getElementById("InputsContainer");
 const playButton = document.getElementById('PlayButton');
 const buttonContainer = document.getElementById('ButtonContainer');
 
+const backgroundMusic = document.getElementById('backgroundMusic'); // Récupérer l'élément audio de fond
+const clickSound = document.getElementById('clickSound'); // Récupérer l'élément audio du clic
+
+// Fonction pour jouer le son de clic
+function playClickSound() {
+    clickSound.currentTime = 0; // Réinitialiser le temps de lecture pour permettre la répétition rapide
+    clickSound.play();
+}
+
 // Fonction pour mettre à jour le compteur et le texte affiché
 function updateInputInfo() {
     const validInputCount = inputsContainer.querySelectorAll('input.ValidInput').length;
@@ -27,6 +36,7 @@ function handleIconClick(evt) {
     if (evt.target.classList.contains("InputIcon")) {
         evt.target.parentNode.remove(); // Supprimer le parent de l'icône (c'est-à-dire la div InputBlock)
         updateInputInfo();
+        playClickSound();
     }
 }
 
@@ -174,10 +184,15 @@ playButton.addEventListener('click', function() {
             // Rendre le ButtonContainer visible en même temps que la carte apparaît
             buttonContainer.style.display = 'flex';
 
+            // Jouer la musique de fond
+            backgroundMusic.play();
+
         }, 3000); // Attendre 3 secondes avant de sélectionner une carte
 
     }, cards.length * 200 + 1500); // Délai initial plus long pour commencer l'animation après le rendu des cartes
 
+    // Jouer le son de clic pour le bouton de lecture
+    playClickSound();
 });
 
 // Ajout des gestionnaires d'événements
@@ -185,3 +200,8 @@ inputsContainer.addEventListener("input", handleInput);
 inputsContainer.addEventListener("click", handleIconClick);
 inputsContainer.addEventListener("keydown", handleKeyDown);
 inputsContainer.addEventListener("focusout", handleInputFocusOut);
+
+// Ajout d'un gestionnaire de clics pour tous les boutons
+document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', playClickSound);
+});
