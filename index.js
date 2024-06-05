@@ -98,10 +98,9 @@ function getRandomReactionImage() {
     return `img/reactions/reaction${randomIndex}.png`;
 }
 
-// Function to display the reaction image and text
+// Function to display the reaction image
 function displayReaction() {
     const reactionImageSrc = getRandomReactionImage();
-    const reactionText = "BAHAHA Gros looser";
 
     const reactionDiv = document.createElement("div");
     reactionDiv.classList.add("reaction");
@@ -110,11 +109,7 @@ function displayReaction() {
     reactionImage.src = reactionImageSrc;
     reactionImage.alt = "Reaction Image";
 
-    const reactionTextElement = document.createElement("p");
-    reactionTextElement.textContent = reactionText;
-
     reactionDiv.appendChild(reactionImage);
-    reactionDiv.appendChild(reactionTextElement);
 
     document.querySelector("#Page2").appendChild(reactionDiv);
 }
@@ -176,7 +171,7 @@ playButton.addEventListener('click', function() {
                     }
                 });
 
-                // Display the reaction image and text after removing non-selected cards
+                // Display the reaction image after removing non-selected cards
                 displayReaction();
 
             }, 500); // Attendre que l'animation de disparition soit terminée avant de supprimer

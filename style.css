@@ -226,12 +226,6 @@ input.ValidInput:focus + .InputIcon{
     margin: 0 auto;
 }
 
-.reaction p {
-    font-size: 16px;
-    color: #fff;
-    margin-top: -10px;
-}
-
 .cardDesign{
     display: flex;
     justify-content: space-between;
